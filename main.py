@@ -43,7 +43,7 @@ async def start_handler(message:types.Message):
 
 @db.message(Command('help'))
 async def start_handler(message:types.Message):
-    await message.answer('salom ob havoni bilish uchun bosing ⬇️',reply_markup=category_buttons)
+    await message.answer('salom bu bot ob havo malumotlarini aniqledigan bot botni faqat telfonda foydalansa boladi')
 
 
 @db.callback_query(F.data=='hozirgi')
