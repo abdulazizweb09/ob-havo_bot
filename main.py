@@ -5,7 +5,7 @@ import requests
 from aiogram import types,Bot,Dispatcher,F
 from aiogram.filters import Command
 from dotenv import load_dotenv
-from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup, ReplyKeyboardMarkup, KeyboardButton
+from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup, ReplyKeyboardMarkup, KeyboardButton,ReplyKeyboardRemove
 
 import os
 load_dotenv()
@@ -39,7 +39,12 @@ category_buttons=InlineKeyboardMarkup(
 
 @db.message(Command('start'))
 async def start_handler(message:types.Message):
-    await message.answer('salom',reply_markup=category_buttons)
+    await message.answer('salom ob havoni bilish uchun bosing ⬇️',reply_markup=category_buttons)
+
+@db.message(Command('help'))
+async def start_handler(message:types.Message):
+    await message.answer('salom ob havoni bilish uchun bosing ⬇️',reply_markup=category_buttons)
+
 
 @db.callback_query(F.data=='hozirgi')
 async def hozirgi_button(cal:types.CallbackQuery):
@@ -93,7 +98,7 @@ async def locations(cal:types.Message):
         f"His qilinadi: {feels}°C\n"
         f"Namlik: {humidity}%\n"
         f"Shamol tezligi: {wind} m/s\n"
-        f"qayta boshlash uchun=> /start"
+        f"qayta boshlash uchun=> /start",reply_markup=ReplyKeyboardRemove()
     )
 
 
